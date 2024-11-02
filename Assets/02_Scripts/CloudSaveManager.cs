@@ -26,6 +26,11 @@ public class CloudSaveManager : MonoBehaviour
         await Auth.Instance.SignInAnonymouslyAsync();
     }
 
+    private void OnEnable()
+    {
+        singleDataSaveButton.onClick.AddListener(async () => await SingleDataSave());
+    }
+
     private async Task SingleDataSave()
     {
         // 저장할 데이터
