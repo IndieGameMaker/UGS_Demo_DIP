@@ -24,6 +24,11 @@ public class AuthUserNamePassword : MonoBehaviour
         {
             await SignUpUser(userNameIf.text, passwordIf.text);
         });
+
+        logInButton.onClick.AddListener(async () =>
+        {
+            await SignInUser(userNameIf.text, passwordIf.text);
+        });
     }
 
     /*
