@@ -24,6 +24,8 @@ public class ScoreManager : MonoBehaviour
 
         scoreSaveButton.onClick.AddListener(async () =>
         await AddScore(int.Parse(scoreIf.text)));
+
+        await LoadScore();
     }
 
     // 점수 기록
