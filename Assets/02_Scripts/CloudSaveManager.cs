@@ -9,6 +9,7 @@ using Auth = Unity.Services.Authentication.AuthenticationService;
 public class CloudSaveManager : MonoBehaviour
 {
     [SerializeField] private Button singleDataSaveButton;
+    [SerializeField] private Button multiDataSaveButton;
 
     private async void Awake()
     {
