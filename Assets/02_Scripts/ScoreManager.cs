@@ -32,4 +32,12 @@ public class ScoreManager : MonoBehaviour
         var response = await Score.Instance.AddPlayerScoreAsync(leaderboardId, score);
         Debug.Log(JsonConvert.SerializeObject(response));
     }
+
+    // 점수 로딩
+    private async Task LoadScore()
+    {
+        var response = await Score.Instance.GetPlayerScoreAsync(leaderboardId);
+        scoreIf.text = response.Score.ToString();
+        Debug.Log($"Ranking : {response.Rank}");
+    }
 }
