@@ -1,9 +1,12 @@
 using Unity.Services.Core;
 using UnityEngine;
+using UnityEngine.UI;
 using Auth = Unity.Services.Authentication.AuthenticationService;
 
 public class CloudSaveManager : MonoBehaviour
 {
+    [SerializeField] private Button singleDataSaveButton;
+
     private async void Awake()
     {
         // 유니티 서비스 초기화
