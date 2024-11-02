@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Android.Gradle.Manifest;
 using Unity.Services.CloudSave;
+using Unity.Services.CloudSave.Models;
 using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.UI;
@@ -74,6 +75,7 @@ public class CloudSaveManager : MonoBehaviour
         });
 
         fileUploadButton.onClick.AddListener(async () => await FileUploadAsync());
+        fileDownloadButton.onClick.AddListener(async () => await FileDownloadAsync());
     }
 
     // 단일 데이터 저장 로직
@@ -161,12 +163,24 @@ public class CloudSaveManager : MonoBehaviour
             // 디스크의 파일 로드
             byte[] file = System.IO.File.ReadAllBytes("screen.png");
             // 파일 전송
-            await CloudSaveService.Instance.Files.Player.SaveAsync("capture_image", file);
+            await CloudSaveService.Instance.Files.Player.SaveAsync($"image_{Time.time}", file);
             Debug.Log("파일 업로드 완료");
         }
         catch (Exception e)
         {
             Debug.Log(e.Message);
+        }
+    }
+
+    // 파일 다운로드
+    private async Task FileDownloadAsync()
+    {
+        List<FileItem> files = await CloudSaveService.Instance.Files.Player.ListAllAsync();
+
+        // 파일 목록
+        for (int i = 0; i < files.Count; i++)
+        {
+            Debug.Log(files[i].Key);
         }
     }
 }
