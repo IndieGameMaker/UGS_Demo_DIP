@@ -62,6 +62,7 @@ public class CloudSaveManager : MonoBehaviour
             await SaveMultiData<PlayerData>("PLAYER_DATA", playerData));
 
         singleDataLoadButton.onClick.AddListener(async () => await LoadData());
+        multiDataLoadButton.onClick.AddListener(async () => await LoadData<PlayerData>("PLAYER_DATA"));
     }
 
     // 단일 데이터 저장 로직
