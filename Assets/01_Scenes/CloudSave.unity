@@ -442,6 +442,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleDataSaveButton: {fileID: 7351659890290369669}
   multiDataSaveButton: {fileID: 12032431151755058}
+  playerData:
+    name: Zack
+    level: 30
+    xp: 2000
+    gold: 100
+    items:
+    - name: sword
+      count: 2
+      iconPath: /weapons/sword
+    - name: knife
+      count: 3
+      iconPath: /weapons/knife
+    - name: twohand_sword
+      count: 1
+      iconPath: /weapons/towhand_sword
 --- !u!4 &2119774707
 Transform:
   m_ObjectHideFlags: 0
