@@ -72,4 +72,12 @@ public class AuthUserNamePassword : MonoBehaviour
             Debug.Log(e.Message);
         }
     }
+    // 익명사용자를 Username/Password 사용자로 전환
+    private async Task AddUserNamePasswordAsync(string username, string password)
+    {
+        await AuthenticationService.Instance.AddUsernamePasswordAsync(username, password);
+
+        // 비밀번호 변경
+        await AuthenticationService.Instance.UpdatePasswordAsync(currentPassword: "Ab123456!", newPassword: "Abc1234567!!");
+    }
 }
