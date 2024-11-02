@@ -22,7 +22,8 @@ public class AuthUserNamePassword : MonoBehaviour
     {
         try
         {
-
+            await AuthenticationService.Instance.SignUpWithUsernamePasswordAsync(username, password);
+            Debug.Log("회원가입 성공");
         }
         catch (AuthenticationException e)
         {
