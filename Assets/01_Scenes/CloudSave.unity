@@ -440,6 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6194751e5e34fa2ba801d56f6d6b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  singleDataSaveButton: {fileID: 7351659890290369669}
 --- !u!4 &2119774707
 Transform:
   m_ObjectHideFlags: 0

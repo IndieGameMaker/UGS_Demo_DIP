@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.Services.CloudSave;
 using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,5 +24,21 @@ public class CloudSaveManager : MonoBehaviour
 
         // 익명 로그인
         await Auth.Instance.SignInAnonymouslyAsync();
+    }
+
+    private async Task SingleDataSave()
+    {
+        // 저장할 데이터
+        var data = new Dictionary<string, object>
+        {
+            {"player_name", "Zack"},
+            {"level", 30},
+            {"xp", 2000}
+            {"gold", 100}
+        };
+
+        // 저장 메소드 호출
+        await CloudSaveService.Instance.Data.Player.SaveAsync(data);
+        Debug.Log("데이터 저장 완료!");
     }
 }
