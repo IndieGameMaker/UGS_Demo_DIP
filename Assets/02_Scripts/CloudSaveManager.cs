@@ -72,6 +72,8 @@ public class CloudSaveManager : MonoBehaviour
         {
             playerData = await LoadData<PlayerData>("PLAYER_DATA");
         });
+
+        fileUploadButton.onClick.AddListener(async () => await FileUploadAsync());
     }
 
     // 단일 데이터 저장 로직
