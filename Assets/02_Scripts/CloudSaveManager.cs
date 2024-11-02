@@ -190,5 +190,8 @@ public class CloudSaveManager : MonoBehaviour
         texture.LoadImage(file);
 
         downloadImage.texture = texture;
+
+        // 파일 삭제
+        await CloudSaveService.Instance.Files.Player.DeleteAsync("capture_image");
     }
 }
