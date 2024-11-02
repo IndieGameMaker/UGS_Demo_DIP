@@ -31,6 +31,10 @@ public class CloudSaveManager : MonoBehaviour
     [SerializeField] private Button singleDataSaveButton;
     [SerializeField] private Button multiDataSaveButton;
 
+    [SerializeField] private Button singleDataLoadButton;
+    [SerializeField] private Button multiDataLoadButton;
+
+
     [Header("Player Data")]
     [SerializeField] private PlayerData playerData;
 
