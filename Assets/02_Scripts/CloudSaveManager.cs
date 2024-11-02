@@ -12,7 +12,8 @@ public class CloudSaveManager : MonoBehaviour
         // 로그인 콜백
         Auth.Instance.SignedIn += () =>
         {
-
+            var _playerId = Auth.Instance.PlayerId;
+            Debug.Log($"로그인 완료 : {_playerId}");
         };
 
         // 익명 로그인
