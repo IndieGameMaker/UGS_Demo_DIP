@@ -55,6 +55,7 @@ public class CloudSaveManager : MonoBehaviour
         singleDataSaveButton.onClick.AddListener(async () => await SingleDataSave());
     }
 
+    // 단일 데이터 저장 로직
     private async Task SingleDataSave()
     {
         // 저장할 데이터
@@ -69,5 +70,18 @@ public class CloudSaveManager : MonoBehaviour
         // 저장 메소드 호출
         await CloudSaveService.Instance.Data.Player.SaveAsync(data);
         Debug.Log("데이터 저장 완료!");
+    }
+
+    // 복수 데이터 저장 로직
+    private async Task SaveMultiData<T>(string key, T saveData)
+    {
+        var data = new Dictionary<string, object>
+        {
+            { key, saveData}
+        };
+
+        // 저장 메소드
+        await CloudSaveService.Instance.Data.Player.SaveAsync(data);
+        Debug.Log("복수 데이터 저장 완료");
     }
 }
