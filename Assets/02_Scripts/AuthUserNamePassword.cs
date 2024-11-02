@@ -1,16 +1,11 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AuthUserNamePassword : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private TMP_InputField userNameIf, passwordIf;
+    [SerializeField] private Button signInButton;
+    [SerializeField] private Button logInButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
