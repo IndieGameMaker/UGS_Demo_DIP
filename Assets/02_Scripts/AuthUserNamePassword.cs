@@ -17,8 +17,17 @@ public class AuthUserNamePassword : MonoBehaviour
         Debug.Log("Unity Services 초기화");
     }
 
+    private void OnEnable()
+    {
+        // 이벤트 바인딩
+        signInButton.onClick.AddListener(async () =>
+        {
+            await SignUpUser(userNameIf.text, passwordIf.text);
+        });
+    }
+
     // 회원가입 로직
-    private async Task SignInUser(string username, string password)
+    private async Task SignUpUser(string username, string password)
     {
         try
         {
