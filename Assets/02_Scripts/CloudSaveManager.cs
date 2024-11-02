@@ -62,7 +62,10 @@ public class CloudSaveManager : MonoBehaviour
             await SaveMultiData<PlayerData>("PLAYER_DATA", playerData));
 
         singleDataLoadButton.onClick.AddListener(async () => await LoadData());
-        multiDataLoadButton.onClick.AddListener(async () => await LoadData<PlayerData>("PLAYER_DATA"));
+        multiDataLoadButton.onClick.AddListener(async () =>
+        {
+            playerData = await LoadData<PlayerData>("PLAYER_DATA");
+        });
     }
 
     // 단일 데이터 저장 로직
@@ -93,6 +96,9 @@ public class CloudSaveManager : MonoBehaviour
         // 저장 메소드
         await CloudSaveService.Instance.Data.Player.SaveAsync(data);
         Debug.Log("복수 데이터 저장 완료");
+
+        // 인스펙에서 데이터 삭제
+        playerData = new PlayerData();
     }
 
     // 싱글 데이터 로드
@@ -119,7 +125,7 @@ public class CloudSaveManager : MonoBehaviour
     }
 
     // 복수 데이터 로드
-    private async Task LoadData<T>(string key)
+    private async Task<T> LoadData<T>(string key)
     {
         var query = new HashSet<string>() { key };
         var loadData = await CloudSaveService.Instance.Data.Player.LoadAsync(query);
@@ -127,8 +133,12 @@ public class CloudSaveManager : MonoBehaviour
         loadData.TryGetValue(key, out var data);
 
         // 1. JSON 출력
-        string jsonStr = JsonUtility.ToJson(data.Value.GetAs<T>());
-        Debug.Log(jsonStr);
+        // string jsonStr = JsonUtility.ToJson(data.Value.GetAs<T>());
+        // Debug.Log(jsonStr);
 
+        // playerData = JsonUtility.FromJson<PlayerData>(jsonStr);
+
+        // 2. GetAs<T>
+        return data.Value.GetAs<T>();
     }
 }
