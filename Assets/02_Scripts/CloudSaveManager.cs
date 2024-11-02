@@ -90,4 +90,27 @@ public class CloudSaveManager : MonoBehaviour
         await CloudSaveService.Instance.Data.Player.SaveAsync(data);
         Debug.Log("복수 데이터 저장 완료");
     }
+
+    // 싱글 데이터 로드
+    /*
+    HashSet
+    */
+    private async Task LoadData()
+    {
+        var query = new HashSet<string>()
+        {
+            "player_name", "level", "xp", "gold"
+        };
+        var data = await CloudSaveService.Instance.Data.Player.LoadAsync(query);
+
+        if (data.TryGetValue("player_name", out var playerName))
+        {
+            Debug.Log("Player Name : " + playerName.Value.GetAs<string>());
+        }
+
+        if (data.TryGetValue("level", out var level))
+        {
+            Debug.Log("Level : " + level.Value.GetAs<int>());
+        }
+    }
 }
