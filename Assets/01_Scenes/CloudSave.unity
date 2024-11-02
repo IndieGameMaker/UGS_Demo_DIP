@@ -956,6 +956,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleDataSaveButton: {fileID: 7351659890290369669}
   multiDataSaveButton: {fileID: 12032431151755058}
+  singleDataLoadButton: {fileID: 1167758763}
+  multiDataLoadButton: {fileID: 1976405223}
   playerData:
     name: Zack
     level: 30

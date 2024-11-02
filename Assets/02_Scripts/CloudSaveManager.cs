@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.Android.Gradle.Manifest;
 using Unity.Services.CloudSave;
 using Unity.Services.Core;
 using UnityEngine;
@@ -114,5 +115,19 @@ public class CloudSaveManager : MonoBehaviour
         {
             Debug.Log("Level : " + level.Value.GetAs<int>());
         }
+    }
+
+    // 복수 데이터 로드
+    private async Task LoadData<T>(string key)
+    {
+        var query = new HashSet<string>() { key };
+        var loadData = await CloudSaveService.Instance.Data.Player.LoadAsync(query);
+
+        loadData.TryGetValue(key, out var data);
+
+        // 1. JSON 출력
+        string jsonStr = JsonUtility.ToJson(data.Value.GetAs<T>());
+        Debug.Log(jsonStr);
+
     }
 }
