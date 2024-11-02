@@ -27,6 +27,10 @@ public class AuthUserNamePassword : MonoBehaviour
     }
 
     // 회원가입 로직
+    /*
+        회원이름 : 대소문자 구별없음, 3 ~ 20자, [. - @]
+        비밀번호 : 대소문자 구별, 대문자 1, 소문자 1, 숫자 1, 특수문자 1 포함
+    */
     private async Task SignUpUser(string username, string password)
     {
         try
