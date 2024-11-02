@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Android.Gradle.Manifest;
@@ -145,5 +146,24 @@ public class CloudSaveManager : MonoBehaviour
 
         // 2. GetAs<T>
         return data.Value.GetAs<T>();
+    }
+
+    // 파일 업로드
+    private async Task FileUploadAsync()
+    {
+        ScreenCapture.CaptureScreenshot("screen.png");
+
+        await Task.Delay(500);
+        try
+        {
+            // 디스크의 파일 로드
+            byte[] file = System.IO.File.ReadAllBytes("screen.png");
+            // 파일 전송
+            await CloudSaveService.Instance.Files.Player.SaveAsync("capture_image", file);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+        }
     }
 }

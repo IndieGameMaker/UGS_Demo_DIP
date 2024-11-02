@@ -1408,6 +1408,9 @@ MonoBehaviour:
   multiDataSaveButton: {fileID: 12032431151755058}
   singleDataLoadButton: {fileID: 1167758763}
   multiDataLoadButton: {fileID: 1976405223}
+  fileUploadButton: {fileID: 1597181428}
+  fileDownloadButton: {fileID: 929625552}
+  downloadImage: {fileID: 1744371419}
   playerData:
     name: Zack
     level: 30
