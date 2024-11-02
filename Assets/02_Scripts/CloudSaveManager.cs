@@ -38,7 +38,7 @@ public class CloudSaveManager : MonoBehaviour
         {
             {"player_name", "Zack"},
             {"level", 30},
-            {"xp", 2000}
+            {"xp", 2000},
             {"gold", 100}
         };
 
