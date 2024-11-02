@@ -6,6 +6,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using Auth = Unity.Services.Authentication.AuthenticationService;
 
+[System.Serializable]
+public struct PlayerData
+{
+    public string name;
+    public int level;
+    public int xp;
+    public int gold;
+
+    public List<ItemData> items;
+}
+
+[System.Serializable]
+public struct ItemData
+{
+    public string name;
+    public int count;
+    public string iconPath;
+}
+
 public class CloudSaveManager : MonoBehaviour
 {
     [SerializeField] private Button singleDataSaveButton;
