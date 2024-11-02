@@ -182,5 +182,13 @@ public class CloudSaveManager : MonoBehaviour
         {
             Debug.Log(files[i].Key);
         }
+
+        // 파일 다운로드
+        byte[] file = await CloudSaveService.Instance.Files.Player.LoadBytesAsync("capture_image");
+        // 텍스터 파일 생생
+        Texture2D texture = new Texture2D(2, 2);
+        texture.LoadImage(file);
+
+        downloadImage.texture = texture;
     }
 }
